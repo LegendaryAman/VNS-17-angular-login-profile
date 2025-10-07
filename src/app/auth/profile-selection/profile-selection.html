@@ -1,0 +1,14 @@
+<div>
+  <h2>Select Your Profile</h2>
+  <div *ngFor="let profile of profiles">
+    <button
+      (click)="selectProfile(profile)"
+      (keyup.enter)="selectProfile(profile)"
+      (keyup.space)="selectProfile(profile)"
+      tabindex="0"
+    >
+      {{ profile }}
+    </button>
+  </div>
+  <button (click)="confirmSelection()" (keyup.enter)="confirmSelection()" tabindex="0">Confirm</button>
+</div>

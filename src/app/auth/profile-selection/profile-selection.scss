@@ -1,0 +1,50 @@
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  
+    .profile-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.2s;
+  
+      &:hover {
+        background: #f0f0f0;
+      }
+  
+      &.selected {
+        background: #d1e7ff;
+        border-color: #007bff;
+      }
+  
+      .heart {
+        font-size: 1.2em;
+      }
+    }
+  }
+  
+  .confirm-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+  
+    &:hover {
+      background: #0056b3;
+    }
+  }
+  
