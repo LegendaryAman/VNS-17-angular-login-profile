@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:3000'; // Replace with your backend base URL
+  private apiUrl = 'http://localhost:3000'; // Placeholder for future backend
   private token: string | null = localStorage.getItem('token');
 
   private http = inject(HttpClient);
@@ -24,16 +24,14 @@ export class AuthService {
 
   getDefaultProfile(userId: string): Observable<{ defaultProfile?: string | null }> {
     console.log(`Fetching default profile for userId: ${userId}`);
-    return this.http.get<{ defaultProfile?: string | null }>(`${this.apiUrl}/users/${userId}/default-profile`).pipe(
-      catchError(() => of({ defaultProfile: null }))
-    );
+    const storedProfile = localStorage.getItem(`defaultProfile_${userId}`);
+    return of({ defaultProfile: storedProfile || null });
   }
 
   saveDefaultProfile(userId: string, profile: string): Observable<{ success: boolean }> {
     console.log(`Saving profile ${profile} for userId: ${userId}`);
-    return this.http.post<{ success: boolean }>(`${this.apiUrl}/users/${userId}/default-profile`, { profile }).pipe(
-      catchError(() => of({ success: false }))
-    );
+    localStorage.setItem(`defaultProfile_${userId}`, profile); // Persist to localStorage
+    return of({ success: true });
   }
 
   setToken(token: string) {

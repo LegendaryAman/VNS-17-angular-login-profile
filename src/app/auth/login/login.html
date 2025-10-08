@@ -1,19 +1,13 @@
 <div class="login-container">
-    <img src="assets/images/logo.png" alt="Logo" class="logo">
-  
-    <h2>Login</h2>
-  
+  <img src="assets/images/logo.png" alt="Logo" class="login-logo">
+  <div class="login-card">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <input type="email" placeholder="Email" formControlName="email" required>
-      <input type="password" placeholder="Password" formControlName="password" required>
-  
-      <a href="#" class="forgot-password">Forgot Password?</a>
-  
-      <button type="submit" class="login-btn">Log in</button>
-  
-      <button type="button" class="sso-btn" (click)="onSSOLogin()">Log in with SSO</button>
-  
-      <p class="error" *ngIf="errorMessage">{{ errorMessage }}</p>
+      <input formControlName="email" placeholder="Email" type="email">
+      <input formControlName="password" placeholder="Password" type="password">
+      <a href="#" (click)="onForgotPassword($event)">Forgot Password?</a>
+      <button type="submit" [disabled]="!loginForm.valid">Log in</button>
+      <button type="button" (click)="onSSOLogin()">Log in with SSO</button>
     </form>
+    <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   </div>
-  
+</div>
