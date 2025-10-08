@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile-selection',
@@ -16,14 +17,21 @@ export class ProfileSelectionComponent {
   private router = inject(Router);
   profiles = ['Admin', 'Institute Admin', 'Instructor', 'Student'];
   selectedProfile: string | null = null;
+  selectedDefault: string | null = null;
+  userId: string;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { userId: string }) {
+    this.userId = data.userId;
+  }
 
   selectProfile(profile: string) {
     this.selectedProfile = profile;
+    this.selectedDefault = this.selectedDefault === profile ? null : profile;
   }
 
   confirmSelection() {
     if (this.selectedProfile) {
-      this.authService.saveDefaultProfile('123', this.selectedProfile).subscribe({
+      this.authService.saveDefaultProfile(this.userId, this.selectedProfile).subscribe({
         next: () => {
           this.router.navigate(['/home']);
         },
@@ -32,5 +40,9 @@ export class ProfileSelectionComponent {
         }
       });
     }
+  }
+
+  isDefault(profile: string): boolean {
+    return this.selectedDefault === profile;
   }
 }

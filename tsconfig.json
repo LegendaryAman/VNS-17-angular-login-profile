@@ -1,5 +1,3 @@
-/* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
-/* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
   "compileOnSave": false,
   "compilerOptions": {
@@ -13,7 +11,12 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "esnext", // Changed from "preserve" to "esnext" for Angular compatibility
+    "moduleResolution": "node", // Added to ensure correct module resolution
+    "baseUrl": ".", // Optional, ensures resolution starts from project root
+    "paths": {
+      "*": ["*"] // Optional, allows wildcard resolution
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

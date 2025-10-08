@@ -4,11 +4,13 @@ import { AuthService } from '../../services/auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { inject } from '@angular/core';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+// import { ProfileSelectionComponent } from '../profile-selection'; // Verified path
+import { ProfileSelectionComponent } from '../profile-selection/profile-selection';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, RouterModule, CommonModule],
+  imports: [ReactiveFormsModule, RouterModule, CommonModule, MatDialogModule],
   templateUrl: './login.html',
   styleUrls: ['./login.scss']
 })
@@ -16,6 +18,7 @@ export class LoginComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
   private router = inject(Router);
+  private dialog = inject(MatDialog);
   loginForm: FormGroup;
   errorMessage = '';
 
@@ -38,7 +41,10 @@ export class LoginComponent {
                 if (profileRes && profileRes.defaultProfile !== null) {
                   this.router.navigate(['/home']);
                 } else {
-                  // Open profile selection modal
+                  this.dialog.open(ProfileSelectionComponent, {
+                    width: '300px',
+                    data: { userId }
+                  });
                 }
               }
             });

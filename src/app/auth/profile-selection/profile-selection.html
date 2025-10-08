@@ -7,8 +7,10 @@
       (keyup.space)="selectProfile(profile)"
       tabindex="0"
     >
-      {{ profile }}
+      {{ isDefault(profile) ? '❤️' : '🤍' }} {{ profile }}
     </button>
   </div>
-  <button (click)="confirmSelection()" (keyup.enter)="confirmSelection()" tabindex="0">Confirm</button>
+  <button (click)="confirmSelection()" (keyup.enter)="confirmSelection()" tabindex="0" [disabled]="!selectedProfile">
+    Confirm
+  </button>
 </div>
