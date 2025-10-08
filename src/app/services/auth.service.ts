@@ -22,9 +22,9 @@ export class AuthService {
     );
   }
 
-  getDefaultProfile(userId: string): Observable<{ defaultProfile?: string }> {
+  getDefaultProfile(userId: string): Observable<{ defaultProfile?: string | null }> {
     console.log(`Fetching default profile for userId: ${userId}`);
-    return this.http.get<{ defaultProfile?: string }>(`${this.apiUrl}/users/${userId}/default-profile`).pipe(
+    return this.http.get<{ defaultProfile?: string | null }>(`${this.apiUrl}/users/${userId}/default-profile`).pipe(
       catchError(() => of({ defaultProfile: null }))
     );
   }

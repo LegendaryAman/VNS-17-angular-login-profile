@@ -34,8 +34,8 @@ export class LoginComponent {
           if (response.success) {
             const userId = response.userId;
             this.authService.getDefaultProfile(userId).subscribe({
-              next: (profileRes: { defaultProfile?: string }) => {
-                if (profileRes && profileRes.defaultProfile) {
+              next: (profileRes: { defaultProfile?: string | null }) => {
+                if (profileRes && profileRes.defaultProfile !== null) {
                   this.router.navigate(['/home']);
                 } else {
                   // Open profile selection modal
