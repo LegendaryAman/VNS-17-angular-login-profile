@@ -1,12 +1,27 @@
+
 <div class="login-container">
-  <img src="assets/images/logo.png" alt="Logo" class="login-logo">
   <div class="login-card">
+    <img src="assets/images/logo.png" alt="Company Logo" class="logo" />
+    <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-      <input formControlName="email" placeholder="Email" type="email">
-      <input formControlName="password" placeholder="Password" type="password">
-      <a href="#" (click)="onForgotPassword($event)">Forgot Password?</a>
-      <button type="submit" [disabled]="!loginForm.valid">Log in</button>
-      <button type="button" (click)="onSSOLogin()">Log in with SSO</button>
+      <label>Email</label>
+      <input formControlName="email" type="email" placeholder="Enter your email" autocomplete="username" />
+      
+      <label>Password</label>
+      <input formControlName="password" type="password" placeholder="Enter your password" autocomplete="current-password" />
+      
+      <a href="#" (click)="onForgotPassword($event)" class="forgot">Forgot password?</a>
+      
+      <button type="submit" [disabled]="!loginForm.valid" class="login-btn">Log in</button>
+      
+      <div class="divider">OR</div>
+      
+      <button type="button" (click)="onSSOLogin()" class="sso-btn">Log in with SSO</button>
+      
+      <div class="supported">
+        <p>Supported By</p>
+        <img src="assets/images/support-logo.png" alt="Support Logo" />
+      </div>
     </form>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
   </div>

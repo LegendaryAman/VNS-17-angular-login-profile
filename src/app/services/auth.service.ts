@@ -30,8 +30,23 @@ export class AuthService {
 
   saveDefaultProfile(userId: string, profile: string): Observable<{ success: boolean }> {
     console.log(`Saving profile ${profile} for userId: ${userId}`);
-    localStorage.setItem(`defaultProfile_${userId}`, profile); // Persist to localStorage
+    localStorage.setItem(`defaultProfile_${userId}`, profile);
     return of({ success: true });
+  }
+
+  requestPasswordReset(email: string): Observable<any> {
+    console.log(`Requesting password reset for email: ${email}`);
+    return this.http.post(`${this.apiUrl}/auth/reset-password`, { email }).pipe(
+      catchError(() => of({ success: false }))
+    );
+  }
+
+  ssoLogin(): Observable<{ userId: string; success: boolean }> {
+    console.log('Simulating SSO login');
+    // Placeholder SSO flow
+    return of({ userId: 'sso123', success: true }).pipe(
+      catchError(() => of({ userId: '', success: false }))
+    );
   }
 
   setToken(token: string) {

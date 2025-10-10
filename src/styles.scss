@@ -3,5 +3,11 @@
 // Other styles can go here
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to right, rgb(3, 71, 117), rgb(6, 147, 208));
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
