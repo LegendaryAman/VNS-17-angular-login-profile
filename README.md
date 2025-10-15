@@ -1,59 +1,37 @@
-# AngularLoginProfile
+# VNS-17: Angular Login Page with Profile Selection
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.4.
+This project implements a login page with profile selection and default profile options using Angular. It includes email/password login, SSO login, and a forgot password feature.
 
-## Development server
+## Installation
 
-To start a local development server, run:
+1. Clone the repository:
+   bash
+   git clone https://github.com/YourUsername/VNS-17-angular-login-profile.git
+   cd VNS-17-angular-login-profile
 
-```bash
+Install dependencies:
+bash
+npm install
+
+Run the application:
+bash
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Open http://localhost:4200/ in your browser.
 
-## Code scaffolding
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Usage
 
-```bash
-ng generate component component-name
-```
+Log in with your email and password or use the SSO option.
+If no default profile is set, a profile selection modal will appear.
+Use the "Forgot Password?" link to request a reset.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+Notes
 
-```bash
-ng generate --help
-```
+App functionality tested manually via ng serve.
+ng test issues unresolved; planned for future fix.
+Ensure assets/images/logo.png and assets/images/support-logo.png are present for full UI functionality.
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Push to GitHub:
+bash
+git push origin VNS-17-implement-login-page-with-profile-selection-and-default-profile-option-in-angular
