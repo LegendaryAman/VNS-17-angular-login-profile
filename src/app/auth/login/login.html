@@ -2,8 +2,6 @@
 <div class="login-container">
   <div class="login-card">
     <img src="assets/images/sec1.png" alt="Company Logo" class="logo" />
-
-
     <h2>Login</h2>
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <label>Email</label>
@@ -22,7 +20,7 @@
       
       <div class="supported">
         <p>Supported By</p>
-        <img src="assets/images/support-logo.png" alt="Support Logo" />
+        <img src="" alt="Support Logo" />
       </div>
     </form>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
